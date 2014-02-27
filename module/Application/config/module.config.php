@@ -34,17 +34,28 @@ return array(
                         'action'        => 'index',
                     ),
                 ),
+                // Here you will configure the url
                 'may_terminate' => true,
                 'child_routes' => array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            //'route'    => '/[:controller[/:action]]',
+                            //'route'    => '/[:controller[/:action[/:id]]]',
+                            'route'    => '/[:controller[/:action[/:id/:id2]]]',
+                            // Data types that yo what receive
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'     => '[0-9]*',
+                                'id2'     => '[0-9]*',
                             ),
                             'defaults' => array(
+                                'defaults' => array(
+                                    '__NAMESPACE__' => 'Application\Controller',
+                                    'controller'    => 'Test',
+                                    'action'        => 'index',
+                                ),
                             ),
                         ),
                     ),
@@ -71,9 +82,11 @@ return array(
             ),
         ),
     ),
+    // Here you will add the controllers with you want to work
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Test' => 'Application\Controller\TestController'
         ),
     ),
     'view_manager' => array(
