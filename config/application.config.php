@@ -1,8 +1,10 @@
 <?php
 return array(
     // This should be an array of module namespaces used in the application.
+    // Aqui es donde se guardan todos los modulos con los que se a trabajar
     'modules' => array(
         'Application',
+        'Work'
     ),
 
     // These are various options for the listeners attached to the ModuleManager

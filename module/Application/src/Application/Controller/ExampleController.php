@@ -26,10 +26,8 @@ class ExampleController extends AbstractActionController
     public function ajaxAction()
     {
         $view = new ViewModel();
-
         // setTerminal no va a cargar ningun layout
         $view->setTerminal(true);
-
 
     }
 
