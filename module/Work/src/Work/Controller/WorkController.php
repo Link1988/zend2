@@ -9,16 +9,8 @@ use Work\Model\Entity\Modelo;
 class WorkController extends AbstractActionController
 {
 
-    public function __construct(Modelo $modelo)
+    public function __construct()
     {
-        $text = $modelo->getText();
-        $array = $modelo->getArray();
-        $valueController = $modelo->fromController();
-        return new ViewModel(array(
-            "text" => $text,
-            "array" => $array,
-            "valueController" => $valueController
-        ));
     }
 
 
@@ -27,7 +19,6 @@ class WorkController extends AbstractActionController
         return new ViewModel();
     }
 
-    /*
     public function modelAction()
     {
         $modelo = new Modelo("Var from Controller");
@@ -40,6 +31,5 @@ class WorkController extends AbstractActionController
             "valueController" => $valueController
         ));
     }
-    */
 
 }

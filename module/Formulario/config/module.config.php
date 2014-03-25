@@ -3,23 +3,23 @@
 return array(
     'controllers'=>array(
         'invokables'=>array(
-            'Work\Controller\Work'=>'Work\Controller\WorkController'
+            'Formulario\Controller\Formulario'=>'Formulario\Controller\FormularioController'
         ),
     ),
 
     'router'=>array(
         'routes'=>array(
-            'work'=>array(
+            'formulario'=>array(
                 'type'=>'Segment',
                 'options'=>array(
 
-                    'route' => '/work[/[:action]]',
+                    'route' => '/formulario[/[:action]]',
                     'constraints' => array(
                         'action'  =>  '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
 
                     'defaults'  =>  array(
-                        'controller' => 'Work\Controller\Work',
+                        'controller' => 'Formulario\Controller\Formulario',
                         'action'     => 'index'
 
                     ),
@@ -37,12 +37,12 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'work/work/index' => __DIR__ . '/../view/work/work/index.phtml',
+            'formulario/index/index' => __DIR__ . '/../view/formulario/formulario/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
         'template_path_stack' => array(
-            'work' =>  __DIR__ . '/../view',
+            'formulario' =>  __DIR__ . '/../view',
         ),
     ),
 );

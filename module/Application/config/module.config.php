@@ -82,7 +82,7 @@ return array(
             ),
         ),
     ),
-    // Here you will add the controllers with you want to work
+    // Here you will add the controllers with you want to formulario
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',

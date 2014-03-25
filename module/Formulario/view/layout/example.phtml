@@ -1,0 +1,21 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <?php echo $this->headTitle($this->valor) ?>
+        <?php echo $this->headMeta()->setCharSet("utf8") ?>
+        <?php echo $this->headLink()->prependStylesheet($this->basePath() . '/css/style.css') ?>
+        <?php echo $this->headStyle() ?>
+        <?php echo $this->headScript()->prependFile($this->basePath().'/js/jquery.min.js') ?>
+    </head>
+    <body>
+        <div class="header">
+            <h2><?php echo $this->saludo ?></h2>
+        </div>
+        <div class="content"><?php echo $this->content ?></div>
+        <div class="footer">
+            <h2>Footer</h2>
+        </div>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

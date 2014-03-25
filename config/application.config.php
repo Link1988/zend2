@@ -4,7 +4,8 @@ return array(
     // Aqui es donde se guardan todos los modulos con los que se a trabajar
     'modules' => array(
         'Application',
-        'Work'
+        'Work',
+        'Formulario'
     ),
 
     // These are various options for the listeners attached to the ModuleManager
