@@ -1,34 +1,77 @@
 <?php
-
 return array(
-    'controllers'=>array(
-        'invokables'=>array(
-            'Formulario\Controller\Formulario'=>'Formulario\Controller\FormularioController'
-        ),
-    ),
-
-    'router'=>array(
-        'routes'=>array(
-            'formulario'=>array(
-                'type'=>'Segment',
-                'options'=>array(
-
-                    'route' => '/formulario[/[:action]]',
-                    'constraints' => array(
-                        'action'  =>  '[a-zA-Z][a-zA-Z0-9_-]*',
+    'router' => array(
+        'routes' => array(
+            'formulario' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/',
+                    'defaults' => array(
+                        'controller' => 'Formulario\Controller\Index',
+                        'action'     => 'index',
                     ),
-
-                    'defaults'  =>  array(
-                        'controller' => 'Formulario\Controller\Formulario',
-                        'action'     => 'index'
-
+                ),
+            ),
+            // The following is a route to simplify getting started creating
+            // new controllers and actions without needing to create a new
+            // module. Simply drop new controllers in, and you can access them
+            // using the path /application/:controller/:action
+            'application' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/formulario',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Formulario\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'index',
+                    ),
+                ),
+                // Here you will configure the url
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'defaults' => array(
+                                'defaults' => array(
+                                    '__NAMESPACE__' => 'Formulario\Controller',
+                                    'controller' => 'Formulario\Controller\Index',
+                                    'action'     => 'index'
+                                ),
+                            ),
+                        ),
                     ),
                 ),
             ),
         ),
     ),
-
-    //Cargamos el view manager
+    'service_manager' => array(
+        'abstract_factories' => array(
+            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
+            'Zend\Log\LoggerAbstractServiceFactory',
+        ),
+        'aliases' => array(
+            'translator' => 'MvcTranslator',
+        ),
+    ),
+    'translator' => array(
+        'locale' => 'en_US',
+        'translation_file_patterns' => array(
+            array(
+                'type'     => 'gettext',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern'  => '%s.mo',
+            ),
+        ),
+    ),
+    // Here you will add the controllers with you want to formulario
+    'controllers' => array(
+        'invokables'=>array(
+            'Formulario\Controller\Index'=>'Formulario\Controller\IndexController',
+            'Formulario\Controller\Formulario'=>'Formulario\Controller\FormularioController',
+        ),
+    ),
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -37,7 +80,8 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'formulario/index/index' => __DIR__ . '/../view/formulario/formulario/index.phtml',
+            'formulario/index/index' => __DIR__ . '/../view/formulario/index/index.phtml',
+            'formulario/index/index' => __DIR__ . '/../view/formulario/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
@@ -45,4 +89,12 @@ return array(
             'formulario' =>  __DIR__ . '/../view',
         ),
     ),
+    // Placeholder for console routes
+    'console' => array(
+        'router' => array(
+            'routes' => array(
+            ),
+        ),
+    ),
 );
+

@@ -6,12 +6,12 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Formulario\Model\Entity\Modelo;
 
-class FormularioController extends AbstractActionController
+class IndexController extends AbstractActionController
 {
 
     public function indexAction()
     {
-        return "hello";
+        return new ViewModel();
     }
 
 
