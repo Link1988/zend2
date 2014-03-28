@@ -1,0 +1,36 @@
+<h1><?php echo $this->title ?></h1>
+
+<?php
+
+$form = $this->form;
+$form->prepare();
+
+$form->setAttributes(array(
+    'action' => $this->url.'/formulario/formularios/recibe',
+    'method' => 'post',
+    'class'  => 'form-horizontal'
+));
+
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+
+?>
+
+<div class="form_element">
+    <?php
+        $name = $form->get('name');
+        echo $formLabel->openTag().$name->getOption('label');
+        echo $this->formInput($name);
+        echo $this->formElementErrors($name);
+        echo $formLabel->closeTag();
+    ?>
+</div>
+
+<?php
+// Render the opening tag
+echo $this->form()->closeTag($form);
+
+?>
