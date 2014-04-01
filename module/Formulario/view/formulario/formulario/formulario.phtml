@@ -6,7 +6,7 @@ $form = $this->form;
 $form->prepare();
 
 $form->setAttributes(array(
-    'action' => $this->url.'/formulario/formularios/recibe',
+    'action' => $this->url.'/formulario/formulario/receive',
     'method' => 'post',
     'class'  => 'form-horizontal'
 ));
@@ -20,14 +20,28 @@ echo $this->form()->openTag($form);
 ?>
 
 <div class="form_element">
+    Name:
     <?php
         $name = $form->get('name');
-        echo $formLabel->openTag().$name->getOption('label');
+        //echo $formLabel->openTag().$name->getOption('label');
         echo $this->formInput($name);
-        echo $this->formElementErrors($name);
-        echo $formLabel->closeTag();
+        //echo $this->formElementErrors($name);
+        //echo $formLabel->closeTag();
     ?>
 </div>
+
+<div class="form_element">
+    Email:
+    <?php
+    $email = $form->get('email');
+    //echo $formLabel->openTag().$name->getOption('label');
+    echo $this->formInput($email);
+    //echo $this->formElementErrors($name);
+    //echo $formLabel->closeTag();
+    ?>
+</div>
+
+<?php echo $this->formElement($form->get('send')) ?>
 
 <?php
 // Render the opening tag

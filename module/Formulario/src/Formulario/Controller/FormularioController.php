@@ -2,6 +2,7 @@
 
 namespace Formulario\Controller;
 
+use Formulario\Model\Entity\Process;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Formulario\Form\Formularios;
@@ -27,7 +28,12 @@ class FormularioController extends AbstractActionController
 
     public function receiveAction()
     {
-        return new ViewModel();
+        $data = $this->request->getPost();
+        $process = new Process($data);
+        $datos = $process->getData();
+        return new ViewModel(array(
+            'data' => $datos
+        ));
     }
 
 }

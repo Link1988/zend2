@@ -28,10 +28,35 @@ class Formularios extends Form
             ));
 
         // Esta es otra manera
+        /*
         $nombre = new Element('name');
         $nombre->setLabel('Your Name');
         $nombre->setAttributes(array(
             'type' => 'text'
+        ));
+        */
+
+        // Esta manera es por medio de un factory
+        $factory = new Factory();
+
+        $email = $factory->createElement(array(
+            'type'    => 'Zend\Form\Element\Email',
+            'name'    => 'email',
+            'options' => array(
+                'label' => 'Email'
+            )
+        ));
+
+        $this->add($email);
+
+
+        //$this->add(new Element);
+        $this->add(array(
+            'name'       => 'send',
+            'attributes' => array(
+                'type' => 'submit',
+                'value' => 'Send'
+            )
         ));
 
     }
