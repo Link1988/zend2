@@ -70,6 +70,7 @@ return array(
         'invokables'=>array(
             'Formulario\Controller\Index'=>'Formulario\Controller\IndexController',
             'Formulario\Controller\Formulario'=>'Formulario\Controller\FormularioController',
+            'Formulario\Controller\FormularioNew'=>'Formulario\Controller\FormularioNewController',
         ),
     ),
     'view_manager' => array(

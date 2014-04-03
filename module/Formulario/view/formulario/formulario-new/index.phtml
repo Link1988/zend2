@@ -1,0 +1,64 @@
+<h1><?php echo $this->title ?></h1>
+
+
+<?php
+
+$form = $this->form;
+
+//die(var_dump($form,true));
+
+$form->prepare();
+
+$form->setAttributes(array(
+    'action' => $this->url.'/formulario/formularionew/receive',
+    'method' => 'post',
+));
+
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+
+?>
+
+<div class="form_element">
+    Name:
+    <?php
+    $name = $form->get('name');
+    //echo $formLabel->openTag().$name->getOption('label');
+    echo $this->formInput($name);
+    //echo $this->formElementErrors($name);
+    //echo $formLabel->closeTag();
+    ?>
+</div>
+
+<div class="form_element">
+    Password:
+    <?php
+    $password = $form->get('password');
+    //echo $formLabel->openTag().$name->getOption('label');
+    echo $this->formInput($password);
+    //echo $this->formElementErrors($name);
+    //echo $formLabel->closeTag();
+    ?>
+</div>
+
+<div class="form_element">
+    Email:
+    <?php
+    $email = $form->get('email');
+    //echo $formLabel->openTag().$name->getOption('label');
+    echo $this->formInput($email);
+    //echo $this->formElementErrors($name);
+    //echo $formLabel->closeTag();
+    ?>
+</div>
+
+<?php echo $this->formElement($form->get('send')) ?>
+
+<?php
+// Render the opening tag
+echo $this->form()->closeTag($form);
+
+?>
